@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan(basePackages = "com.game.model")
-@EnableJpaRepositories(basePackages = "com.game.dao")
+@EnableJpaRepositories(basePackages = "com.game.repository")
 public class BowlingApplication {
 
 	public static void main(String[] args) {
