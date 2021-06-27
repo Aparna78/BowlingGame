@@ -3,7 +3,6 @@ package com.game.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import lombok.Data;
 
@@ -15,7 +14,5 @@ public class Score {
 	 Integer currentScore;
 	 Integer numberOfStrike;
 	 Integer numberOfSpare;
-	 @OneToOne
-	 Player player;
 	
 }
