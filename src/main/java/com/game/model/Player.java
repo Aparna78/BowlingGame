@@ -13,7 +13,7 @@ public class Player {
 
    @Id @GeneratedValue Long id;
    String name;
-   String laneNumber;
+   Integer laneNumber;
    @OneToOne
    Score score;
   
