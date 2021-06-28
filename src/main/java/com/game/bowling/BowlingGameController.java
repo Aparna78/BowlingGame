@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.model.Game;
 import com.game.model.Lane;
 import com.game.model.Player;
@@ -35,8 +37,7 @@ public class BowlingGameController {
 	int numberOfPlayerAllowedInEachLane = 3;
 	int maxChance = 2;
 	
-	Game g = new Game();	
-	List<Lane> lanelist = new ArrayList<Lane>();
+
 
 	BowlingGameController(PlayerRepository playerRepository, ScoreRepository scoreRepository, GameRepository gameRepository, LaneRepository laneRepository) {
 	    this.playerRepository = playerRepository;
@@ -62,7 +63,9 @@ public class BowlingGameController {
 	  
 	//eg: curl -X POST localhost:8080/startGame -H 'Content-type:application/json' -d '["a","b","c"]'
 	  @PostMapping("/startGame")
-	  String startGame(@RequestBody List<String> playerNameList) {
+	  String startGame(@RequestBody List<String> playerNameList) throws JsonProcessingException {
+		  Game g = new Game();	
+			List<Lane> lanelist = new ArrayList<Lane>();
 	    int noOfPlayer = playerNameList.size();
 	    List<Player> playerList = new ArrayList<Player>();
 	    int playerNumber = 0;
@@ -101,7 +104,7 @@ public class BowlingGameController {
 	    
 	    g.setLaneList(lanelist);
 	    gameRepository.save(g);
-	    return "Game is On !!\n"+g;
+	    return new ObjectMapper().writeValueAsString(g);
 	  }
 	  
 	  @GetMapping("/getActivePlayerNameByLaneNumber/{laneNumber}")
