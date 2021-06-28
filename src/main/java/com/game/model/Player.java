@@ -1,5 +1,6 @@
 package com.game.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,8 +14,9 @@ public class Player {
 
    @Id @GeneratedValue Long id;
    String name;
-   Integer laneNumber;
-   @OneToOne
+   int playerNumber;
+   int chance = 1;
+   @OneToOne(cascade = {CascadeType.ALL})
    Score score;
   
 }

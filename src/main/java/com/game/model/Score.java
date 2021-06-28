@@ -10,9 +10,10 @@ import lombok.Data;
 @Data
 public class Score {
 	@Id @GeneratedValue Long id;
-	 Integer totalScore;
-	 Integer currentScore;
-	 Integer numberOfStrike;
-	 Integer numberOfSpare;
+	 int totalScore = 0;
+	 int chanceOneScore = 0;
+	 int chanceTwoScore = 0;
+	 int numberOfStrike = 0;
+	 int numberOfSpare = 0;
 	
 }

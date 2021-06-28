@@ -42,7 +42,7 @@ class BowlingApplicationTests {
 	void contextLoads() {
 	}
 	
-	@SuppressWarnings("deprecation")
+	/*@SuppressWarnings("deprecation")
 	@Test
 	@Transactional
 	public void testPlayerRepository() {
@@ -54,7 +54,7 @@ class BowlingApplicationTests {
         
         Player p1 = playerRepository.findByName("Aparna");
         Assert.assertEquals(new Integer(10), p1.getLaneNumber());
-        }
+        }*/
 
 	@Test
 	public void findAllPlayerTest() throws Exception {
