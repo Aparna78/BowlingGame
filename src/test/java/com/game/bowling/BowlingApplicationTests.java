@@ -4,6 +4,9 @@ package com.game.bowling;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.junit.Assert;
@@ -15,8 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.game.model.Player;
 import com.game.repository.PlayerRepository;
 import org.slf4j.Logger;
@@ -37,7 +42,7 @@ class BowlingApplicationTests {
 
 	@Autowired
 	private PlayerRepository playerRepository;
-
+	
 	@Test
 	void contextLoads() {
 	}
@@ -59,5 +64,18 @@ class BowlingApplicationTests {
 	public void findAllPlayerTest() throws Exception {
 
 		this.mockMvc.perform(get("/players")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void startGameTest() throws Exception {	
+		List<String> values = Arrays.asList("foo", "bar", "baz");
+		ObjectMapper mapper = new ObjectMapper();
+		String newJsonData = mapper.writeValueAsString(values);
+		mockMvc.perform( MockMvcRequestBuilders
+			      .post("/startGame")
+			      .content(newJsonData)
+			      .contentType(MediaType.APPLICATION_JSON)
+			      .accept(MediaType.APPLICATION_JSON))
+			      .andExpect(status().isOk());
 	}
 }
