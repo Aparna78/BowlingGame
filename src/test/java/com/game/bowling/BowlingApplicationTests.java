@@ -78,4 +78,17 @@ class BowlingApplicationTests {
 			      .accept(MediaType.APPLICATION_JSON))
 			      .andExpect(status().isOk());
 	}
+	
+	@Test
+	public void playBowlingTest() throws Exception {	
+		int values = 10;
+		ObjectMapper mapper = new ObjectMapper();
+		String newJsonData = mapper.writeValueAsString(values);
+		mockMvc.perform( MockMvcRequestBuilders
+			      .put("/bowlingByLane/1/1")
+			      .content(newJsonData)
+			      .contentType(MediaType.APPLICATION_JSON)
+			      .accept(MediaType.APPLICATION_JSON))
+			      .andExpect(status().isOk());
+	}
 }
