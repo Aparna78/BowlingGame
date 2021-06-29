@@ -42,19 +42,18 @@ class BowlingApplicationTests {
 	void contextLoads() {
 	}
 	
-	/*@SuppressWarnings("deprecation")
 	@Test
 	@Transactional
 	public void testPlayerRepository() {
 	    log.info("... testPersistRepository ...");
 		Player p = new Player();
         p.setName("Aparna");
-        p.setLaneNumber(10);
+        p.setPlayerNumber(10);
         playerRepository.save(p);
         
         Player p1 = playerRepository.findByName("Aparna");
-        Assert.assertEquals(new Integer(10), p1.getLaneNumber());
-        }*/
+        Assert.assertEquals(10, p1.getPlayerNumber());
+        }
 
 	@Test
 	public void findAllPlayerTest() throws Exception {
