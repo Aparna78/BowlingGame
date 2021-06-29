@@ -15,7 +15,7 @@ public class Player {
    @Id @GeneratedValue Long id;
    String name;
    int playerNumber;
-   int chance = 1;
+   int chancePlayed = 0;
    @OneToOne(cascade = {CascadeType.ALL})
    Score score;
   

@@ -2,9 +2,9 @@ import json
 import requests
 import os
 
-def startGameRequest():
-    data = ['a','b','c','d','e']
+def startGame():
+    data = ['Nairobi','Denver','Tokyo','Berlin','Rio']
     response = requests.post('http://localhost:8080/startGame', json=data)
     return response.text
 
-print startGameRequest()
+print startGame()

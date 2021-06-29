@@ -19,7 +19,9 @@ public class Lane {
 	int laneNumber;
 	int activeSetNumber = 1;
 	@OneToOne(cascade = {CascadeType.ALL})
-	Player activePlayer;
+	Player currentPlayer;
+	@OneToOne(cascade = {CascadeType.ALL})
+	Player nextPlayer;
 	@OneToMany(cascade = {CascadeType.ALL})
 	List<Player> playerList;
 

@@ -2293,3 +2293,10 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/aparn
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 62 more
+2021-06-29 11:03:11 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM LANE 
+SELECT[*] * FROM PLAYER 
+SELECT * FROM SCORE"; SQL statement:
+SELECT * FROM LANE 
+SELECT * FROM PLAYER 
+SELECT * FROM SCORE [42000-200]
