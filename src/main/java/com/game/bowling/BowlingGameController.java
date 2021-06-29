@@ -71,21 +71,6 @@ public class BowlingGameController {
 		return new ObjectMapper().writeValueAsString(g);
 	}
 	
-
-	@GetMapping("/getActivePlayerNameByLaneNumber/{gameId}/{laneNumber}")
-	String getActivePlayerName(@PathVariable long gameId, @PathVariable int laneNumber) {
-		Game g = gameRepository.findGameById(gameId).orElseThrow(() -> new RecordNotFoundException("Game id '" + gameId + "' does no exist"));;
-		
-		List<Lane> lanelist = g.getLaneList();
-		for (int i =0; i<lanelist.size(); i++) {
-			if (lanelist.get(i).getLaneNumber() == laneNumber)
-				return lanelist.get(i).getCurrentPlayer().getName();
-		}
-		
-		return "Name not found";
-	}
-	
-
 	@PutMapping("/bowlingByLane/{gameId}/{laneNumber}")
 	String playBowling(@PathVariable long gameId, @PathVariable int laneNumber, @RequestBody int numberOfPinKnocked){ 
 		Game g = gameRepository.findGameById(gameId).orElseThrow(() -> new RecordNotFoundException("Game id '" + gameId + "' does no exist"));
@@ -113,6 +98,24 @@ public class BowlingGameController {
 		
 		return "Game Updated !!";
 	}	  
+
+	@GetMapping("/getActivePlayerNameByLaneNumber/{gameId}/{laneNumber}")
+	String getActivePlayerName(@PathVariable long gameId, @PathVariable int laneNumber) {
+		Game g = gameRepository.findGameById(gameId).orElseThrow(() -> new RecordNotFoundException("Game id '" + gameId + "' does no exist"));;
+		
+		List<Lane> lanelist = g.getLaneList();
+		for (int i =0; i<lanelist.size(); i++) {
+			if (lanelist.get(i).getLaneNumber() == laneNumber)
+				return lanelist.get(i).getCurrentPlayer().getName();
+		}
+		
+		return "Name not found";
+	}
+	
+	@GetMapping("/getTotalScoreByPlayerName/{playerName}")
+	String getTotalScoreByPlayerName(@PathVariable String playerName) throws JsonProcessingException{
+		return new ObjectMapper().writeValueAsString(playerRepository.findByName(playerName).getScore());
+	}
 
 	
 	@DeleteMapping("/deleteGameById/{id}")

@@ -97,7 +97,8 @@ public class BowlingGameService {
 		if ((activeSetNumber < MAX_NUMBER_OF_SET & currentPlayer.getChancePlayed() == 2) 
 			|| (activeSetNumber < MAX_NUMBER_OF_SET  & numberOfPinKnocked == MAX_NUMBER_OF_PIN) 
 			|| (activeSetNumber == MAX_NUMBER_OF_SET & currentPlayer.getChancePlayed() == MAX_CHANCE & numberOfPinKnocked < MAX_NUMBER_OF_PIN)
-			|| (activeSetNumber == MAX_NUMBER_OF_SET & currentPlayer.getChancePlayed() == 3)) {
+			|| (activeSetNumber == MAX_NUMBER_OF_SET & currentPlayer.getChancePlayed() == 3)
+			|| (activeSetNumber == MAX_NUMBER_OF_SET & currentPlayer.getChancePlayed() == MAX_CHANCE & numberOfPinKnocked == MAX_NUMBER_OF_PIN)) {
 			currentPlayer.setChancePlayed(0);
 			currentPlayer.getScore().setChanceOneScore(0);
 			currentPlayer.getScore().setChanceTwoScore(0);
