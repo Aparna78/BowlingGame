@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -56,8 +57,9 @@ class BowlingApplicationTests {
         p.setPlayerNumber(10);
         playerRepository.save(p);
         
-        Player p1 = playerRepository.findByName("Aparna");
-        Assert.assertEquals(10, p1.getPlayerNumber());
+        Optional<Player> p1 = playerRepository.findByName("Aparna");
+        Assert.assertNotEquals(p1, Optional.empty());
+        Assert.assertEquals(10, p1.get().getPlayerNumber());
         }
 
 	@Test
