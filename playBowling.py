@@ -12,6 +12,7 @@ def getTotalScoreByPlayerName(playerName):
     return response.text
 
 def playCustom():
+    no_of_pin_knocked = sys.argv[3]
     playBowling(gameId, laneNumber, no_of_pin_knocked)
     print "Game Update!!"
 
@@ -31,6 +32,5 @@ def sampleGame():
 
 gameId = sys.argv[1]
 laneNumber = sys.argv[2]
-no_of_pin_knocked = sys.argv[3]
 #playCustom()
 sampleGame()
